@@ -1,0 +1,97 @@
+import requests , random
+from requests import get,post 
+##req = requests 
+
+print("""
+
+   _____                   
+  / ____|                  
+ | (___   ___  _ __  _   _ 
+  \___ \ / _ \| '_ \| | | |
+  ____) | (_) | | | | |_| |
+ |_____/ \___/|_| |_|\__, |
+                      __/ |
+                     |___/ 
+    Checker Emails sony
+    By: @014931500
+
+""")
+emails = input('Enter Email : ')
+
+
+# فقط لتجربه @help.sleep
+def sony1():
+    url = f'https://ca.account.sony.com/api/v1/accounts/email' 
+    head = {
+        'Accept': '*/*',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Accept-Language': 'ar,en;q=0.9,en-GB;q=0.8,en-US;q=0.7',
+        'Authorization': 'Bearer fb631a56-8a6b-49e4-8e1b-8aadf63771aa',
+        'Connection': 'keep-alive',
+        'Content-Length': '736',
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Host': 'ca.account.sony.com',
+        'Origin': 'https://my.account.sony.com',
+        'Referer': 'https://my.account.sony.com/',
+        'sec-ch-ua': '"Microsoft Edge";v="105", " Not;A Brand";v="99", "Chromium";v="105"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
+        'Sec-Fetch-Dest': 'empty',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Site': 'same-site',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.33',
+        'X-Origin-ClientId': '70156ca4-e84e-4836-ade8-b254b76a9d9f',
+        'X-Platform': 'WEB'
+    }
+    data = {
+        'emailType': '"FORGOT_PASSWORD"',
+        
+        'redirectUrl': '"https%3A%2F%2Fca.account.sony.com%2Fapi%2Fauthz%2Fv3%2Foauth%2Fauthorize%3Fscope%3Dpsn%253Amobile.v2.core%26ui%3Dpr%26darkmode%3Dtrue%26token_format%3Djwt%26access_type%3Doffline%26client_id%3D70156ca4-e84e-4836-ade8-b254b76a9d9f%26elements_visibility%3Dno_aclink%26no_captcha%3Dfalse%26PlatformPrivacyWs1%3Dminimal%26redirect_uri%3Dcom.playstation.PlayStationApp%253A%252F%252Fredirect%26response_type%3Dcode%26service_entity%3Durn%253Aservice-entity%253Apsn%26service_logo%3Dps%26support_scheme%3Dsneiprls%26cid%3D724E7EF0-166C-469D-9139-9926E842B8CF%26duid%3D0000000d00040080FF4A08F1D7264D19A3504684F0BCEA2D%26auth_ver%3Dv3%26enable_scheme_error_code%3Dtrue"',
+        f'signinId': emails
+    }
+    req = requests.post(url , headers=head , data=data)
+    print(req.text)
+    if req.status_code == '201':
+        print('Done : '+emails)
+    else:
+        print('Nothing # '+emails)
+
+sony1()
+
+#تست اذا ما ضبط الاول 
+def sony2():
+    urls = 'https://ca.account.sony.com/api/v1/oauth/token'
+    heads = {
+        'Accept': '*/*',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Accept-Language': 'ar,en;q=0.9,en-GB;q=0.8,en-US;q=0.7',
+        'Connection': 'keep-alive',
+        'Content-Length': '786',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Cookie': 's_fid=4259F46C4FCF06D2-214284E2D8832CEC; s_cc=true; bm_sz=4E67A63DE6ED04DC6CFC055601584403~YAAQ33RZaAH+DTeDAQAAJ5MbNxELY3MFzk5bhRa8WbqtZQitCCaQX82ZXXbc9ct4wcZ9/Nsy6dM+4+AKsbHQgRxEl/g6+kx8zbUU6yFY0pFesD+sguVuAOvu/X+uI1BbbIPh+HwCqFYmG8xQ4ySlh5NQc8KG0Ed7STS5Nqb5gGgj1JsbsKVzyacjEMr33fdA4UZR99hoEpHwwy6zPA9av8tbeDKNhD1cXBb7mkFJYgfhhPNg2EOv6dtvWpFm6ev87AcLXYIN1xMY4zsyrTX78lv5iv2ELTqRgStJABWRf110tVq7+eqQyQdQBuk6/ndeEIxqXvMznMKYure9+ZXrLwycRp49ONseoYZboW3tvRp+FHByUP1ZfKocBJpRORUN7xSD8g17QKjXc+AfjofarFuXG2U=~3553602~3488069; _abck=0410F5FA1C3F7B035292CE0592913CE9~-1~YAAQ33RZaOUjEjeDAQAA44UyNwjbBXmD8RXQ0TzyjtN1GQD8m/O8Y4tWpa6iOodoVWIgg6bFT5/N9CTykEKM5tZbGkVd6FdGWCngGfDzQ2Eo/QjC36wAlB1gl5Hn7AkAOxuxnKTzH3GiHGVW8ls/BvQhlfrbosI8eRP3onwbGMLJaFmuCMQfRoOE7jT3Co5YHsxIJUxX2CerjvnSVbZkLrnWof9bueGADys4sjxT23TJrGzgsFh+bCrO+iqIXVBzs7SEQvvKT5qpovjXE/mcBXn5J1laoNCNyTk/zTnDYUQoiDOJs8Ypifg7fHZgZFc8+Nj4DSpy3udmuSJ0jCa2qiS57zTP83mqvnhx2/6WMefFwxTRgIwupbEQ7N64WKZbQzDIfaFSu8JLDvzICkTRKrYLUGZ1FvzHphCYVPLpIiKSJ7hy6Q92p5NbyBePCCou~-1~-1~-1',
+        'Host': 'ca.account.sony.com',
+        'Origin': 'https://my.account.sony.com',
+        'Referer': 'https://my.account.sony.com/',
+        'sec-ch-ua': '"Microsoft Edge";v="105", " Not;A Brand";v="99", "Chromium";v="105"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
+        'Sec-Fetch-Dest': 'empty',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Site': 'same-site',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.33',
+        'X-Origin-ClientId': '70156ca4-e84e-4836-ade8-b254b76a9d9f',
+        'X-Referer-Info': 'https://my.account.sony.com/central/verification/?entry=reset_password&unified_language=en-US&unified_country=US&origin_client_id=70156ca4-e84e-4836-ade8-b254b76a9d9f&PlatformPrivacyWs1=minimal&redirect_uri=https%3A%2F%2Fca.account.sony.com%2Fapi%2Fauthz%2Fv3%2Foauth%2Fauthorize%3Fscope%3Dpsn%253Amobile.v2.core%26ui%3Dpr%26darkmode%3Dtrue%26token_format%3Djwt%26access_type%3Doffline%26client_id%3D70156ca4-e84e-4836-ade8-b254b76a9d9f%26elements_visibility%3Dno_aclink%26no_captcha%3Dfalse%26PlatformPrivacyWs1%3Dminimal%26redirect_uri%3Dcom.playstation.PlayStationApp%253A%252F%252Fredirect%26response_type%3Dcode%26service_entity%3Durn%253Aservice-entity%253Apsn%26service_logo%3Dps%26support_scheme%3Dsneiprls%26cid%3D724E7EF0-166C-469D-9139-9926E842B8CF%26duid%3D0000000d00040080FF4A08F1D7264D19A3504684F0BCEA2D%26auth_ver%3Dv3%26enable_scheme_error_code%3Dtrue'
+    }
+    data = {
+        'grant_type': 'captcha',
+        'captcha_provider': 'arkose:challenge',
+        'scope': 'user:account.email.create',
+        f'valid_for': emails,
+        'response_token': '546632090020c1ee2.4077892005|r=eu-west-1|metabgclr=%23ffffff|guitextcolor=%23000000|metaiconclr=%23757575|meta=3|lang=en|pk=9869C2EE-434F-4116-A2E5-B6E1237239DA|at=40|sup=1|rid=30|ag=101|cdn_url=https%3A%2F%2Fclient-api.arkoselabs.com%2Fcdn%2Ffc|lurl=https%3A%2F%2Faudio-eu-west-1.arkoselabs.com|surl=https%3A%2F%2Fclient-api.arkoselabs.com|smurl=https%3A%2F%2Fclient-api.arkoselabs.com%2Fcdn%2Ffc%2Fassets%2Fstyle-manager'
+    }
+    req = requests.post(urls, headers=heads, data=data)
+    print(req.text)
+    if req.status_code == 200:
+        print('Done : '+emails+'\n')
+    else: print('Nothing : '+emails+'\n')
+sony2()
